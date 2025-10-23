@@ -1,0 +1,233 @@
+/* ==================================================
+   VARIABLES CSS (Paleta HSL + Tema Dual)
+   ================================================== */
+:root {
+    /* MODO CLARO (Default - Tu nueva paleta) */
+   
+    /* COLORES BASE */
+    --color-fondo-claro: hsl(29, 100%, 89%);   /* #FFE1C9 (Color 2) - Fondo Principal */
+    --color-fondo-sutil: hsl(140, 16%, 73%);    /* #AFC7B9 (Color 1) - Fondo Sutil/Neutro */
+    --color-texto-oscuro: hsl(23, 11%, 56%);   /* #998B82 (Color 5) - Texto Oscuro/Bordes */
+    --color-primario: hsl(6, 95%, 80%);        /* #FCA89D (Color 4) - Acento Principal/Botones */
+    --color-secundario: hsl(17, 85%, 84%);     /* #FAC7B4 (Color 3) - Acento Secundario/Hover Claro */
+    --color-blanco: hsl(0, 0%, 100%);
+   
+    /* COLORES DE ESTADO (Mantenidos para funcionalidad) */
+    --color-exito: hsl(135, 61%, 41%);    
+    --color-advertencia: hsl(45, 100%, 51%);
+   
+    /* Variables TEMPORALES de colores */
+    --color-tabla-labial: var(--color-primario);
+    --color-tabla-sombras: var(--color-texto-oscuro);
+    --color-tabla-gloss: var(--color-exito);
+
+    /* VARIABLES DE FUENTE */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* MODO OSCURO (Para JavaScript que añade el atributo data-theme="dark" al body) */
+[data-theme="dark"] {
+    --color-fondo-claro: hsl(23, 11%, 56%);       /* Fondo Oscuro Principal (Color 5) */
+    --color-texto-oscuro: hsl(29, 100%, 89%);     /* Texto Claro Principal (Color 2) */
+    --color-primario: hsl(6, 95%, 80%);           /* Acento (Color 4) */
+}
+
+
+/* ==================================================
+   ESTILOS BASE
+   ================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--color-fondo-claro);
+    color: var(--color-texto-oscuro);
+margin: 16px;
+font-family: var(--font-body); /* Usa la variable de fuente de cuerpo */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave de modo */
+}
+
+/* ==================================================
+   TIPOGRAFÍA
+   ================================================== */
+
+/* Títulos y Encabezados */
+h1 {
+color: var(--color-primario);
+    font-family: var(--font-heading); /* Fuente elegante */
+    font-weight: 700;
+border-bottom: 4px solid currentColor;
+}
+
+h2 {
+    color: var(--color-primario);
+    font-family: var(--font-heading); /* Fuente elegante */
+    font-weight: 600;
+}
+
+p {
+font-family: var(--font-body);
+font-size: 18px;
+color: var(--color-texto-oscuro);
+}
+
+/* Lista de productos/características */
+li {
+    color: var(--color-texto-oscuro); /* Cambiado a Color 5 para mejor legibilidad en el cuerpo */
+}
+
+/* Tabla de Productos */
+th {
+    color: var(--color-texto-oscuro);
+}
+td {
+    color: var(--color-texto-oscuro); /* Usamos Color 5 para consistencia */
+}
+/* Aunque ya no usaremos los colores fijos, dejamos la estructura */
+td:nth-child(1) { color: var(--color-tabla-labial); }
+td:nth-child(2) { color: var(--color-tabla-sombras); }
+td:nth-child(3) { color: var(--color-tabla-gloss); }
+
+
+/* Links y Enlaces */
+a {
+color: var(--color-primario); /* Color 4: #FCA89D */
+border-bottom: 2px solid currentColor;
+text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover {
+    /* Cambia a tu Color 5 en hover para contraste (el gris pardo) */
+    color: var(--color-texto-oscuro); /* #998B82 */
+}
+
+/* Sugerencia opcional para que la imagen de la card no se deforme */
+.object-fit-cover { object-fit: cover; }
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+footer {
+    background-color: var(--color-texto-oscuro) !important; /* Color 5: #998B82 */
+    color: var(--color-blanco) !important;
+}
+
+/* ==================================================
+   TESTIMONIOS
+   ================================================== */
+.testimonio {
+    border-color: var(--color-fondo-claro) !important;
+}
+
+.testimonio-vip {
+    border: 1px solid var(--color-primario) !important; /* Borde con Color 4 */
+    background-color: var(--color-secundario); /* Fondo con Color 3: #FAC7B4 */
+}
+
+/* ==================================================
+   HOVER Y COMPONENTES DE BOOTSTRAP
+   ================================================== */
+
+/* Botones primarios (ej: Comprar ahora) */
+.btn-primary {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+    transition: all 0.2s ease;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    /* Oscurece a Color 5 en hover */
+    background-color: var(--color-texto-oscuro);
+    border-color: var(--color-texto-oscuro);
+    transform: scale(1.05);
+}
+
+/* Botones OUTLINE (ej: Aviso, Más detalles) */
+.btn-outline-secondary {
+    color: var(--color-texto-oscuro);
+    border-color: var(--color-texto-oscuro);
+    transition: all 0.2s ease;
+}
+.btn-outline-secondary:hover {
+    background-color: var(--color-texto-oscuro);
+    color: var(--color-blanco);
+}
+
+/* Botón de promoción (btn-warning) */
+.btn-warning {
+    background-color: var(--color-secundario); /* Color 3: #FAC7B4 */
+    border-color: var(--color-secundario);
+    color: var(--color-texto-oscuro);
+    transition: all 0.2s ease;
+}
+.btn-warning:hover {
+    background-color: var(--color-primario); /* Color 4: #FCA89D */
+    border-color: var(--color-primario);
+    color: var(--color-texto-oscuro);
+}
+
+/* ==================================================
+   WHATSAPP FLOAT
+   ================================================== */
+.whatsapp-float {
+position: fixed;
+width: 60px;
+height: 60px;
+bottom: 20px;
+right: 20px;
+background-color: #25d366;
+color: var(--color-blanco);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 30px;
+box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+z-index: 1055;
+text-decoration: none;
+transition: transform .2s ease, background-color .2s ease, opacity .2s ease;
+
+opacity: 0;
+visibility: hidden;
+transform: translateY(8px);
+pointer-events: none;
+}
+
+/* Estado visible al hacer scroll */
+.whatsapp-float.show {
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+pointer-events: auto;
+}
+
+/* Hover/focus: efecto de ampliación */
+.whatsapp-float:hover,
+.whatsapp-float:focus {
+background-color: #20b954;
+transform: scale(1.08);
+outline: none;
+}
+
+/* ==================================================
+   AJUSTES RESPONSIVOS Y UTILIDADES
+   ================================================== */
+
+@media (max-width: 575.98px) {
+footer { padding-bottom: 84px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+.whatsapp-float { transition: none; }
+}
+
+/* === Ajustes responsivos (Vacíos por ahora) === */
+@media (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) {
+}
